@@ -17,8 +17,8 @@ def get_all_books():
     if request.method == 'POST':
         if request.is_json:
             data = request.get_json()
-            new_example = Book(Title=data['title'], Author=data['author'], ISBN=data['isbn'], Quantity=data['quantity'])
-            db.session.add(new_example)
+            new_book = Book(Title=data['title'], Author=data['author'], ISBN=data['isbn'], Quantity=data['quantity'])
+            db.session.add(new_book)
             db.session.commit()
             return {"message": "New example has been created successfully."}
         else:
@@ -39,7 +39,7 @@ def get_all_books():
         return {"error" : "request method not supported"}
 
 
-@book_controller.route('/book/<id>', methods=['GET'])
+@book_controller.route('/book/<int:id>', methods=['GET'])
 def get_book_by_id(id):
     book = Book.query.get(id)
     if book is None:
@@ -48,3 +48,19 @@ def get_book_by_id(id):
         return {'id' : book.id, 'title': book.Title, 'author': book.Author, 'isbn' : book.ISBN, 'quantity' : book.Quantity}
 
 
+@book_controller.route('/book/<string:name>', methods=['GET'])
+def get_book_by_title(name):
+    book = Book.query.filter_by(Title=name).first()
+    if book is None:
+        return {"error": "Book not found"}
+    else:
+        return {'id' : book.id, 'title': book.Title, 'author': book.Author, 'isbn' : book.ISBN, 'quantity' : book.Quantity}
+
+
+@book_controller.route('/book/author/<string:author>', methods=['GET'])
+def get_book_by_author(author):
+    book = Book.query.filter_by(Author=author).first()
+    if book is None:
+        return {"error": "Book not found"}
+    else:
+        return {'id' : book.id, 'title': book.Title, 'author': book.Author, 'isbn' : book.ISBN, 'quantity' : book.Quantity}
