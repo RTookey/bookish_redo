@@ -43,35 +43,33 @@ def upgrade():
 
     op.bulk_insert(sa.table(
         'books',
-        sa.Column('id', sa.Integer),
         sa.Column('Title', sa.String),
         sa.Column('Author', sa.String),
         sa.Column('ISBN', sa.String),
         sa.Column('Quantity', sa.Integer)
     ),
         [
-            {'id': 1, 'Title': 'The Great Gatsby', 'Author': 'F. Scott Fitzgerald', 'ISBN': '9780743273565',
+            {'Title': 'The Great Gatsby', 'Author': 'F. Scott Fitzgerald', 'ISBN': '9780743273565',
              'Quantity': 5},
-            {'id': 2, 'Title': '1984', 'Author': 'George Orwell', 'ISBN': '9780451524935', 'Quantity': 10},
-            {'id': 3, 'Title': 'To Kill a Mockingbird', 'Author': 'Harper Lee', 'ISBN': '9780061120084', 'Quantity': 8},
-            {'id': 4, 'Title': 'Brave New World', 'Author': 'Aldous Huxley', 'ISBN': '9780060850524', 'Quantity': 7},
-            {'id': 5, 'Title': 'Moby-Dick', 'Author': 'Herman Melville', 'ISBN': '9781503280786', 'Quantity': 3}
+            {'Title': '1984', 'Author': 'George Orwell', 'ISBN': '9780451524935', 'Quantity': 10},
+            {'Title': 'To Kill a Mockingbird', 'Author': 'Harper Lee', 'ISBN': '9780061120084', 'Quantity': 8},
+            {'Title': 'Brave New World', 'Author': 'Aldous Huxley', 'ISBN': '9780060850524', 'Quantity': 7},
+            {'Title': 'Moby-Dick', 'Author': 'Herman Melville', 'ISBN': '9781503280786', 'Quantity': 3}
         ]
     )
 
     op.bulk_insert(sa.table(
         'users',
-        sa.Column('id', sa.Integer),
         sa.Column('Name', sa.String),
         sa.Column('Password', sa.String),
         sa.Column('Limit', sa.Integer)
     ),
         [
-            {'id': 1, 'Name': 'Alice Johnson', 'Password': 'Test123', 'Limit': 5},
-            {'id': 2, 'Name': 'Bob Smith', 'Password': 'Test123', 'Limit': 3},
-            {'id': 3, 'Name': 'Charlie Brown', 'Password': 'Test123', 'Limit': 7},
-            {'id': 4, 'Name': 'Diana Prince', 'Password': 'Test123', 'Limit': 10},
-            {'id': 5, 'Name': 'Evan Wright', 'Password': 'Test123', 'Limit': 2}
+            {'Name': 'Alice Johnson', 'Password': 'Test123', 'Limit': 5},
+            {'Name': 'Bob Smith', 'Password': 'Test123', 'Limit': 3},
+            {'Name': 'Charlie Brown', 'Password': 'Test123', 'Limit': 7},
+            {'Name': 'Diana Prince', 'Password': 'Test123', 'Limit': 10},
+            {'Name': 'Evan Wright', 'Password': 'Test123', 'Limit': 2}
         ]
     )
 

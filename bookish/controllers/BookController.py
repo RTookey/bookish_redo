@@ -17,7 +17,7 @@ def get_all_books():
     if request.method == 'POST':
         if request.is_json:
             data = request.get_json()
-            new_book = Book(Title=data['title'], Author=data['author'], ISBN=data['isbn'], Quantity=data['quantity'])
+            new_book = Book(title=data['title'], author=data['author'], isbn=data['isbn'], quantity=data['quantity'])
             db.session.add(new_book)
             db.session.commit()
             return {"message": "New example has been created successfully."}
@@ -25,7 +25,7 @@ def get_all_books():
             return {"error": "The request payload is not in JSON format"}
 
     elif request.method == 'GET':
-        books = Book.query.all()
+        books = Book.query.order_by(Book.Author).all()
         results = [
                 {
                     'id': book.id,

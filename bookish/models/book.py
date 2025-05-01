@@ -3,10 +3,8 @@ from bookish.models.user_book import user_book
 
 
 class Book(db.Model):
-    # This sets the name of the table in the database
     __tablename__ = 'books'
 
-    # Here we outline what columns we want in our database
     id = db.Column(db.Integer, primary_key=True)
     Title = db.Column(db.String())
     Author = db.Column(db.String())
@@ -20,8 +18,7 @@ class Book(db.Model):
         self.ISBN = isbn
         self.Quantity = quantity
 
-    def __repr__(self):
-        return '<id {}>'.format(self.id)
+
 
     def serialize(self):
         return {
