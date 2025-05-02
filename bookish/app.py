@@ -2,6 +2,7 @@ from flask import Flask
 import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_cors import CORS
 
 
 db = SQLAlchemy()
@@ -19,6 +20,8 @@ def create_app():
         db.create_all()
 
     Migrate(app, db)
+
+    CORS(app)
 
     from bookish.controllers.BookController import book_controller
     app.register_blueprint(book_controller)

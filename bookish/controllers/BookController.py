@@ -34,7 +34,7 @@ def get_all_books():
                     'isbn' : book.ISBN,
                     'quantity' : book.Quantity
                 } for book in books]
-        return {"books": results}
+        return results
     else:
         return {"error" : "request method not supported"}
 
