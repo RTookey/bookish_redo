@@ -32,7 +32,8 @@ def get_all_books():
                     'title': book.Title,
                     'author': book.Author,
                     'isbn' : book.ISBN,
-                    'quantity' : book.Quantity
+                    'copies' : book.Quantity,
+                    'available' : book.Quantity - len(book.users)
                 } for book in books]
         return results
     else:
@@ -45,7 +46,7 @@ def get_book_by_id(id):
     if book is None:
         return {"error": "Book not found"}
     else:
-        return {'id' : book.id, 'title': book.Title, 'author': book.Author, 'isbn' : book.ISBN, 'quantity' : book.Quantity}
+        return {'id' : book.id, 'title': book.Title, 'author': book.Author, 'isbn' : book.ISBN, 'quantity' : book.Quantity, 'available' : book.Quantity - len(book.users)}
 
 
 @book_controller.route('/book/<string:name>', methods=['GET'])

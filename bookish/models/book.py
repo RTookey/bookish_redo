@@ -19,7 +19,6 @@ class Book(db.Model):
         self.Quantity = quantity
 
 
-
     def serialize(self):
         return {
             'id': self.id,
